@@ -87,11 +87,23 @@ if __name__ == "__main__":
             print("> Selamat, Anda sudah menjadi seorang back-end developer!\n")
 
         elif user_option == "3":
-            ask = input("[y/n] : ")
-            print("Apakah Anda sudah menguasai front-end web development?", ask)
+            front_end_web_dev = input("Apakah Anda sudah belajar front-end web development? [y/n]: ")
+            print()
 
-            if ask.lower == "n" :
-                print("Anda harus menguasai front-end web development terlebih dahulu.")
+            if front_end_web_dev.lower() == "n":
+                print("Anda harus belajar front-end web development terlebih dahulu.")
+            elif front_end_web_dev.lower() == "y":
+                back_end_web_dev = input("Apakah Anda sudah belajar back-end web development? [y/n]: ")
+                print()
+
+                if back_end_web_dev.lower() == "n":
+                    print("Anda harus belajar back-end web development terlebih dahulu.")
+                elif back_end_web_dev.lower() == "y":
+                    print("> Selamat, Anda sudah menjadi seorang full-stack web developer!\n")
+                else:
+                    print("Pilihan tidak ada di opsi. Silakan masukkan 'y' atau 'n'.")
+            else:
+                print("Pilihan tidak ada di opsi. Silakan masukkan 'y' atau 'n'.")
 
         else:
             print("\nTidak ada di opsi")
