@@ -1,4 +1,5 @@
 import os
+import time
 from learning__path import learningPath
 
 if __name__ == "__main__":
@@ -7,7 +8,7 @@ if __name__ == "__main__":
         os.system("clear")
     elif operation_system == "nt":
         os.system("cls")
-    
+
     print("==========================================")
     print("||          SELAMAT DATANG DI           ||")
     print("||   PROGRAM SEDERHANA LEARNING PATH    ||")
@@ -19,7 +20,7 @@ if __name__ == "__main__":
             os.system("clear")
         elif operation_system == "nt":
             os.system("cls")
-        
+
         print("==========================================")
         print("||          SELAMAT DATANG DI           ||")
         print("||   PROGRAM SEDERHANA LEARNING PATH    ||")
@@ -32,8 +33,8 @@ if __name__ == "__main__":
 
         user_option = input("Mau belajar apa hari ini? : ")
         print()
-        
-        if user_option == "1" :
+
+        if user_option == "1":
             front_end = learningPath()  # Membuat objek dari kelas frontEnd
             front_end.enqueue("HTML5")  # Menambahkan data enqueue
             front_end.enqueue("CSS")
@@ -42,7 +43,23 @@ if __name__ == "__main__":
             front_end.enqueue("Version Control System")
             front_end.enqueue("Tailwind")
             front_end.enqueue("React")
-            front_end.visualisasi()  # Memanggil metode visualisasi dari objek front_end
+            front_end.visualisasi()
+
+            while not front_end.is_empty():
+                current_topic = front_end.peek()
+                learned = input("Apakah Anda sudah mempelajari {}? [y/n]: ".format(current_topic))
+
+                if learned.lower() == "n":
+                    print("\n> Anda harus belajar {} terlebih dahulu\n".format(current_topic))
+                    time.sleep(2.5)
+                elif learned.lower() == "y":
+                    front_end.dequeue()
+                    front_end.visualisasi()
+                else:
+                    print("Pilihan tidak ada di opsi. Silakan masukkan 'y' atau 'n'.")
+
+            print("> Selamat, Anda sudah menjadi seorang front-end developer!\n")
+            
         elif user_option == "2":
             back_end()
         elif user_option == "3":
@@ -51,7 +68,7 @@ if __name__ == "__main__":
             print("\nTidak ada di opsi")
 
         is_done = input("Apakah selesai [y/n]? ")
-        if is_done == "y" or is_done == "Y":
+        if is_done.lower() == "y":
             break
 
     print("\n~ Program berakhir, Terima kasih\n")
