@@ -35,8 +35,8 @@ if __name__ == "__main__":
         print()
 
         if user_option == "1":
-            front_end = learningPath()  # Membuat objek dari kelas frontEnd
-            front_end.enqueue("HTML5")  # Menambahkan data enqueue
+            front_end = learningPath()
+            front_end.enqueue("HTML5")
             front_end.enqueue("CSS")
             front_end.enqueue("Bootstrap")
             front_end.enqueue("JavaScript")
@@ -56,14 +56,43 @@ if __name__ == "__main__":
                     front_end.dequeue()
                     front_end.visualisasi()
                 else:
-                    print("Pilihan tidak ada di opsi. Silakan masukkan 'y' atau 'n'.")
+                    print("\nPilihan tidak ada di opsi. Silakan masukkan 'y' atau 'n'.\n")
 
             print("> Selamat, Anda sudah menjadi seorang front-end developer!\n")
-            
+
         elif user_option == "2":
-            back_end()
+            back_end = learningPath()
+            back_end.enqueue("Python")
+            back_end.enqueue("Flask")
+            back_end.enqueue("Django")
+            back_end.enqueue("Database")
+            back_end.enqueue("RESTful API")
+            back_end.enqueue("Authentication")
+            back_end.enqueue("Deployment")
+            back_end.visualisasi()
+
+            while not back_end.is_empty():
+                current_topic = back_end.peek()
+                learned = input("Apakah Anda sudah mempelajari {}? [y/n]: ".format(current_topic))
+
+                if learned.lower() == "n":
+                    print("\n> Anda harus belajar {} terlebih dahulu\n".format(current_topic))
+                    time.sleep(2.5)
+                elif learned.lower() == "y":
+                    back_end.dequeue()
+                    back_end.visualisasi()
+                else:
+                    print("\nPilihan tidak ada di opsi. Silakan masukkan 'y' atau 'n'.\n")
+
+            print("> Selamat, Anda sudah menjadi seorang back-end developer!\n")
+
         elif user_option == "3":
-            full_stack()
+            ask = input("[y/n] : ")
+            print("Apakah Anda sudah menguasai front-end web development?", ask)
+
+            if ask.lower == "n" :
+                print("Anda harus menguasai front-end web development terlebih dahulu.")
+
         else:
             print("\nTidak ada di opsi")
 
