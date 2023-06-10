@@ -1,5 +1,3 @@
-import time
-
 class learningPath:
     def __init__(self, n = 7):
         self.size = n
@@ -7,6 +5,15 @@ class learningPath:
         self.back = None
         self.current_size = 0 # Kosong
         self.data = [None] * n
+    
+    def peek(self):
+        if self.current_size > 0:
+            return self.data[self.front]
+        else:
+            return None
+
+    def is_empty(self):
+        return self.current_size == 0
     
     # Memasukan item ke frontEnd
     def enqueue(self, x):
@@ -47,60 +54,3 @@ class learningPath:
         print()
         print("=" * 82)
         print()
-
-# Q = learningPath()
-# Q.enqueue("HTML5")
-# Q.enqueue("CSS")
-# Q.enqueue("Bootstrap")
-# Q.enqueue("JavaScript")
-# Q.enqueue("Version Control System")
-# Q.enqueue("Tailwind")
-# Q.enqueue("React")
-
-# print("\nKapasitas\t:", Q.size)
-# print("Jumlah item\t:", Q.current_size)
-# print("Indeks depan\t:", Q.front)
-# print("Indeks belakang\t:", Q.back)
-# print("Data\t\t:", Q.data)
-
-# Q.visualisasi()
-
-# isDoneHtml = input("Apakah anda sudah belajar HTML5? [y/n] :")
-# if isDoneHtml == "y" or isDoneHtml == "Y":
-#     Q.dequeue()
-#     Q.visualisasi()
-#     isDoneCss = input("Apakah anda sudah belajar CSS? [y/n] :")
-#     if isDoneCss == "y" or isDoneHtml == "Y":
-#         Q.dequeue()
-#         Q.visualisasi()
-#     elif isDoneCss == "n" :
-#         print("\nAnda belum belajar CSS")
-#         Q.visualisasi()
-#     else:
-#         print("Input tidak valid.")
-# elif isDoneHtml == "n" :
-#     print("\nAnda belum belajar HTML5")
-#     Q.visualisasi()
-# else:
-    # print("Input tidak valid.")
-
-
-
-# isDoneHtml = input("Apakah anda sudah belajar HTML5? [y/n] :")
-# if isDoneHtml.lower() == "y":
-#     Q.dequeue()
-#     Q.visualisasi()
-# elif isDoneHtml.lower() == "n":
-#     print("Anda belum belajar HTML5.")
-#     time.sleep(5)  # Penundaan selama 5 detik
-#     isDoneHtml = input("Apakah anda sudah belajar HTML5 sekarang? [y/n] :")
-#     Q.visualisasi()
-#     if isDoneHtml.lower() == "y":
-#         Q.dequeue()
-#         Q.visualisasi()
-#     elif isDoneHtml.lower() == "n":
-#         print("Anda masih belum belajar HTML5.")
-#     else:
-#         print("Input tidak valid.")
-# else:
-#     print("Input tidak valid.")
